@@ -16,13 +16,3 @@ add_library(imgui_gl3
 target_include_directories(imgui_gl3 PUBLIC ${CMAKE_SOURCE_DIR})
 
 target_link_libraries(imgui_gl3 imgui gl3w)
-
-install(TARGETS imgui_gl3
-  ARCHIVE DESTINATION lib
-  RUNTIME DESTINATION lib
-)
-
-install(
-  FILES imgui_gl_wrapper.hpp
-  DESTINATION include
-)
