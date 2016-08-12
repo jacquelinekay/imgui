@@ -1,6 +1,5 @@
-find_package(OpenGL)
-find_package(PkgConfig)
-pkg_search_module(glfw3 REQUIRED glfw3)
+find_package(OpenGL REQUIRED)
+find_package(glfw3 REQUIRED)
 
 add_library(gl3w
   ../libs/gl3w/GL/gl3w.c
@@ -9,6 +8,7 @@ target_include_directories(gl3w
   PUBLIC
   ../libs/gl3w/
 )
+
 
 target_link_libraries(gl3w ${OPENGL_LIBRARIES} ${GLFW3_LIBRARY} dl)
 

@@ -49,30 +49,26 @@ void imgui_window_render(GLFWwindow* window, ImVec4& clear_color)
 }
 */
 
-bool imgui_gl3_window_init(int width, int height, const char* title, GLFWwindow* window)
+GLFWwindow* imgui_gl3_window_init(int width, int height, const char* title)
 {
-    if (window != NULL)
-    {
-      return false;
-    }
     // Setup window
     glfwSetErrorCallback(error_callback);
     if (!glfwInit())
-        return false;
+        return nullptr;
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 #if __APPLE__
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
-    window = glfwCreateWindow(width, height, title, NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(width, height, title, NULL, NULL);
     glfwMakeContextCurrent(window);
     gl3wInit();
 
     // Setup ImGui binding
     ImGui_ImplGlfwGL3_Init(window, true);
 
-    return true;
+    return window;
 }
 void imgui_gl3_window_shutdown()
 {
