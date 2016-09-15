@@ -1,5 +1,12 @@
-find_package(OpenGL REQUIRED)
-find_package(glfw3 REQUIRED)
+find_package(OpenGL)
+find_package(glfw3)
+
+if (NOT ${OpenGL_FOUND} OR ${glfw3_FOUND})
+  message(WARNING "opengl3 or glfw3 not found, not building visualization example")
+  set(imgui_glfw3_BUILT FALSE)
+  return()
+endif()
+set(imgui_glfw3_BUILT TRUE)
 
 add_library(gl3w
   ../libs/gl3w/GL/gl3w.c
