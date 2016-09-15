@@ -1,8 +1,8 @@
 find_package(OpenGL)
 find_package(glfw3)
 
-if (NOT ${OpenGL_FOUND} OR ${glfw3_FOUND})
-  message(WARNING "opengl3 or glfw3 not found, not building visualization example")
+if (NOT ${glfw3_FOUND})
+  message(WARNING "glfw3 not found, not building visualization example")
   set(imgui_glfw3_BUILT FALSE)
   return()
 endif()
