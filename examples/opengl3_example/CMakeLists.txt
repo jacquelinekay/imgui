@@ -22,6 +22,6 @@ target_link_libraries(gl3w ${OPENGL_LIBRARIES} ${GLFW3_LIBRARY} dl)
 add_library(imgui_gl3
   imgui_impl_glfw_gl3.cpp
 )
-target_include_directories(imgui_gl3 PUBLIC ${IMGUI_PATH})
+target_include_directories(imgui_gl3 PUBLIC "../..")
 
 target_link_libraries(imgui_gl3 imgui gl3w)
